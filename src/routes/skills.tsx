@@ -1,9 +1,25 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SectionHeader } from "@/components/SectionHeader";
 import {
-  SiReact, SiTypescript, SiJavascript, SiNodedotjs, SiExpress, SiMongodb,
-  SiPython, SiTailwindcss, SiGreensock, SiFigma, SiGit, SiDocker,
-  SiPostgresql, SiNextdotjs, SiTensorflow, SiHtml5, SiCss, SiVite,
+  SiReact,
+  SiTypescript,
+  SiJavascript,
+  SiNodedotjs,
+  SiExpress,
+  SiMongodb,
+  SiPython,
+  SiTailwindcss,
+  SiFigma,
+  SiGit,
+  SiNextdotjs,
+  SiHtml5,
+  SiCss,
+  SiVite,
+  SiMysql,
+  SiNumpy,
+  SiPandas,
+  SiPostman,
+  SiVercel,
 } from "@icons-pack/react-simple-icons";
 import { Brain, Sparkles, Server, Palette, Wrench } from "lucide-react";
 import type { ComponentType } from "react";
@@ -12,7 +28,7 @@ interface Skill {
   name: string;
   icon: ComponentType<{ className?: string; color?: string }>;
   color: string;
-  level: number; // 0-100
+  level: number;
 }
 
 interface SkillGroup {
@@ -31,7 +47,6 @@ const groups: SkillGroup[] = [
       { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E", level: 95 },
       { name: "Next.js", icon: SiNextdotjs, color: "#FFFFFF", level: 80 },
       { name: "Tailwind", icon: SiTailwindcss, color: "#38BDF8", level: 92 },
-      { name: "GSAP", icon: SiGreensock, color: "#88CE02", level: 85 },
       { name: "HTML5", icon: SiHtml5, color: "#E34F26", level: 95 },
       { name: "CSS3", icon: SiCss, color: "#1572B6", level: 92 },
     ],
@@ -43,7 +58,7 @@ const groups: SkillGroup[] = [
       { name: "Node.js", icon: SiNodedotjs, color: "#5FA04E", level: 88 },
       { name: "Express", icon: SiExpress, color: "#FFFFFF", level: 85 },
       { name: "MongoDB", icon: SiMongodb, color: "#47A248", level: 82 },
-      { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1", level: 75 },
+      { name: "MySQL", icon: SiMysql, color: "#4479A1", level: 90 },
     ],
   },
   {
@@ -51,7 +66,8 @@ const groups: SkillGroup[] = [
     icon: Brain,
     skills: [
       { name: "Python", icon: SiPython, color: "#3776AB", level: 85 },
-      { name: "TensorFlow", icon: SiTensorflow, color: "#FF6F00", level: 70 },
+      { name: "NumPy", icon: SiNumpy, color: "#82BDD1", level: 80 },
+      { name: "Pandas", icon: SiPandas, color: "#300CBF", level: 78 },
     ],
   },
   {
@@ -59,7 +75,8 @@ const groups: SkillGroup[] = [
     icon: Wrench,
     skills: [
       { name: "Git", icon: SiGit, color: "#F05032", level: 90 },
-      { name: "Docker", icon: SiDocker, color: "#2496ED", level: 70 },
+      { name: "Postman", icon: SiPostman, color: "#FF6C37", level: 82 },
+      { name: "Vercel", icon: SiVercel, color: "#FFFFFF", level: 84 },
       { name: "Figma", icon: SiFigma, color: "#F24E1E", level: 85 },
       { name: "Vite", icon: SiVite, color: "#646CFF", level: 88 },
     ],
@@ -69,8 +86,11 @@ const groups: SkillGroup[] = [
 export const Route = createFileRoute("/skills")({
   head: () => ({
     meta: [
-      { title: "Skills — Kanishkhaa M S" },
-      { name: "description", content: "Technical skills and tools used by Kanishkhaa M S." },
+      { title: "Skills - Kanishkhaa M S" },
+      {
+        name: "description",
+        content: "Technical skills and tools used by Kanishkhaa M S.",
+      },
     ],
   }),
   component: SkillsPage,
@@ -90,23 +110,25 @@ function SkillsPage() {
 
       {groups.map((group) => {
         const Icon = group.icon;
+
         return (
           <section key={group.title}>
             <SectionHeader
               title={group.title.replace(/ /g, "_")}
               meta={`${group.skills.length} items`}
             />
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
               {group.skills.map((skill) => {
                 const SkillIcon = skill.icon;
+
                 return (
                   <div
                     key={skill.name}
-                    className="group relative border border-border bg-surface rounded-md p-4 hover:border-muted-foreground/50 transition-all hover:-translate-y-0.5"
+                    className="group relative rounded-md border border-border bg-surface p-4 transition-all hover:-translate-y-0.5 hover:border-muted-foreground/50"
                   >
                     <div className="flex items-center gap-3">
                       <div
-                        className="size-9 rounded-md flex items-center justify-center bg-background border border-border"
+                        className="flex size-9 items-center justify-center rounded-md border border-border bg-background"
                         style={{
                           boxShadow: `0 0 16px -6px ${skill.color}`,
                         }}
@@ -114,13 +136,13 @@ function SkillsPage() {
                         <SkillIcon className="size-5" color={skill.color} />
                       </div>
                       <div className="min-w-0">
-                        <p className="text-sm font-medium truncate">{skill.name}</p>
-                        <p className="text-[10px] font-mono text-muted-foreground tabular-nums">
+                        <p className="truncate text-sm font-medium">{skill.name}</p>
+                        <p className="text-[10px] font-mono tabular-nums text-muted-foreground">
                           {skill.level}%
                         </p>
                       </div>
                     </div>
-                    <div className="mt-3 h-1 bg-border rounded-full overflow-hidden">
+                    <div className="mt-3 h-1 overflow-hidden rounded-full bg-border">
                       <div
                         className="h-full rounded-full transition-all"
                         style={{

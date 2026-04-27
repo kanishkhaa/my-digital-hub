@@ -13,23 +13,23 @@ export const Route = createFileRoute("/education")({
 
 const items = [
   {
-    school: "SNS College of Technology",
-    degree: "B.E. Computer Science & Engineering",
+    school: "Bannari Amman Institute of Technology",
+    degree: "Bachelor of Engineering in Computer Science and Engineering",
     period: "2023 — 2027",
-    detail: "CGPA: 8.9 / 10 · Coursework: Data Structures, OS, DBMS, ML, Web Engineering.",
+    detail: "CGPA: 8.98 / 10",
     highlight: true,
   },
   {
-    school: "Sri Vidya Mandir Hr. Sec. School",
-    degree: "Higher Secondary (Class 12) — Computer Science",
-    period: "2021 — 2023",
-    detail: "Scored 94% · School topper in Computer Science.",
+    school: "R.J Matriculation Higher Secondary School",
+    degree: "Higher Secondary Education (Class 12)",
+    period: "2022 — 2023",
+    detail: "Score: 95.83% · Secured centum in Computer Science · Secured Top mark award in Maths.",
   },
   {
-    school: "Sri Vidya Mandir Hr. Sec. School",
+    school: "R.J Matriculation Higher Secondary School",
     degree: "Secondary School (Class 10)",
-    period: "2020 — 2021",
-    detail: "Scored 96% with distinction in Mathematics & Science.",
+    period: "2021 — 2022",
+    detail: "Successfully completed secondary education.",
   },
 ];
 

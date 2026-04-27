@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Briefcase, ArrowRight } from "lucide-react";
 import { internships } from "@/data/portfolio";
+import internshipCert from "@/assets/internship-certificate.png";
 
 export const Route = createFileRoute("/internship")({
   head: () => ({
@@ -47,8 +48,20 @@ function InternshipPage() {
               </div>
             ))}
           </div>
+
+          <div className="mt-6 flex justify-center">
+            <div className="max-w-xs rounded-md border border-border overflow-hidden bg-background">
+              <img
+                src={internshipCert}
+                alt="Internship Certificate"
+                className="w-full h-auto object-cover"
+              />
+            </div>
+          </div>
         </section>
       ))}
     </div>
   );
 }
+
+export default InternshipPage;
