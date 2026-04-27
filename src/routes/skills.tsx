@@ -3,7 +3,7 @@ import { SectionHeader } from "@/components/SectionHeader";
 import {
   SiReact, SiTypescript, SiJavascript, SiNodedotjs, SiExpress, SiMongodb,
   SiPython, SiTailwindcss, SiGreensock, SiFigma, SiGit, SiDocker,
-  SiPostgresql, SiNextdotjs, SiTensorflow, SiHtml5, SiCss3, SiVite,
+  SiPostgresql, SiNextdotjs, SiTensorflow, SiHtml5, SiCss, SiVite,
 } from "@icons-pack/react-simple-icons";
 import { Brain, Sparkles, Server, Palette, Wrench } from "lucide-react";
 import type { ComponentType } from "react";
@@ -33,7 +33,7 @@ const groups: SkillGroup[] = [
       { name: "Tailwind", icon: SiTailwindcss, color: "#38BDF8", level: 92 },
       { name: "GSAP", icon: SiGreensock, color: "#88CE02", level: 85 },
       { name: "HTML5", icon: SiHtml5, color: "#E34F26", level: 95 },
-      { name: "CSS3", icon: SiCss3, color: "#1572B6", level: 92 },
+      { name: "CSS3", icon: SiCss, color: "#1572B6", level: 92 },
     ],
   },
   {

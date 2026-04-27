@@ -90,7 +90,7 @@ export function ProfileLayout({ children }: { children: React.ReactNode }) {
                 <Link
                   key={tab.to}
                   to={tab.to}
-                  activeOptions={{ exact: tab.exact ?? false }}
+                  activeOptions={{ exact: "exact" in tab ? tab.exact : false }}
                   className="px-4 py-3 text-xs font-mono text-muted-foreground hover:text-foreground transition-colors tracking-tight whitespace-nowrap border-b-2 border-transparent -mb-[1px] data-[status=active]:text-foreground data-[status=active]:border-accent"
                 >
                   <span className="text-accent/60 mr-1">[{tab.index}]</span>
