@@ -2,6 +2,5 @@
   "buildCommand": "bun run build",
   "installCommand": "bun install",
   "framework": "vite",
-  "outputDirectory": "dist",
-  "envPrefix": "VITE_"
+  "outputDirectory": "dist"
 }
