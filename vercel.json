@@ -3,10 +3,11 @@
   "installCommand": "bun install",
   "framework": "vite",
   "outputDirectory": "dist/client",
+  "cleanUrls": true,
   "rewrites": [
     {
-      "source": "/:path*",
-      "destination": "/api/[[...route]]"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
