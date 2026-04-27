@@ -11,9 +11,11 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SkillsRouteImport } from './routes/skills'
 import { Route as ProjectsRouteImport } from './routes/projects'
+import { Route as InternshipRouteImport } from './routes/internship'
 import { Route as FeaturedRouteImport } from './routes/featured'
 import { Route as EducationRouteImport } from './routes/education'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CertificationsRouteImport } from './routes/certifications'
 import { Route as AchievementsRouteImport } from './routes/achievements'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -25,6 +27,11 @@ const SkillsRoute = SkillsRouteImport.update({
 const ProjectsRoute = ProjectsRouteImport.update({
   id: '/projects',
   path: '/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InternshipRoute = InternshipRouteImport.update({
+  id: '/internship',
+  path: '/internship',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FeaturedRoute = FeaturedRouteImport.update({
@@ -42,6 +49,11 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CertificationsRoute = CertificationsRouteImport.update({
+  id: '/certifications',
+  path: '/certifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AchievementsRoute = AchievementsRouteImport.update({
   id: '/achievements',
   path: '/achievements',
@@ -56,18 +68,22 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/achievements': typeof AchievementsRoute
+  '/certifications': typeof CertificationsRoute
   '/contact': typeof ContactRoute
   '/education': typeof EducationRoute
   '/featured': typeof FeaturedRoute
+  '/internship': typeof InternshipRoute
   '/projects': typeof ProjectsRoute
   '/skills': typeof SkillsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/achievements': typeof AchievementsRoute
+  '/certifications': typeof CertificationsRoute
   '/contact': typeof ContactRoute
   '/education': typeof EducationRoute
   '/featured': typeof FeaturedRoute
+  '/internship': typeof InternshipRoute
   '/projects': typeof ProjectsRoute
   '/skills': typeof SkillsRoute
 }
@@ -75,9 +91,11 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/achievements': typeof AchievementsRoute
+  '/certifications': typeof CertificationsRoute
   '/contact': typeof ContactRoute
   '/education': typeof EducationRoute
   '/featured': typeof FeaturedRoute
+  '/internship': typeof InternshipRoute
   '/projects': typeof ProjectsRoute
   '/skills': typeof SkillsRoute
 }
@@ -86,27 +104,33 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/achievements'
+    | '/certifications'
     | '/contact'
     | '/education'
     | '/featured'
+    | '/internship'
     | '/projects'
     | '/skills'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/achievements'
+    | '/certifications'
     | '/contact'
     | '/education'
     | '/featured'
+    | '/internship'
     | '/projects'
     | '/skills'
   id:
     | '__root__'
     | '/'
     | '/achievements'
+    | '/certifications'
     | '/contact'
     | '/education'
     | '/featured'
+    | '/internship'
     | '/projects'
     | '/skills'
   fileRoutesById: FileRoutesById
@@ -114,9 +138,11 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AchievementsRoute: typeof AchievementsRoute
+  CertificationsRoute: typeof CertificationsRoute
   ContactRoute: typeof ContactRoute
   EducationRoute: typeof EducationRoute
   FeaturedRoute: typeof FeaturedRoute
+  InternshipRoute: typeof InternshipRoute
   ProjectsRoute: typeof ProjectsRoute
   SkillsRoute: typeof SkillsRoute
 }
@@ -135,6 +161,13 @@ declare module '@tanstack/react-router' {
       path: '/projects'
       fullPath: '/projects'
       preLoaderRoute: typeof ProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/internship': {
+      id: '/internship'
+      path: '/internship'
+      fullPath: '/internship'
+      preLoaderRoute: typeof InternshipRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/featured': {
@@ -158,6 +191,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/certifications': {
+      id: '/certifications'
+      path: '/certifications'
+      fullPath: '/certifications'
+      preLoaderRoute: typeof CertificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/achievements': {
       id: '/achievements'
       path: '/achievements'
@@ -178,12 +218,23 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AchievementsRoute: AchievementsRoute,
+  CertificationsRoute: CertificationsRoute,
   ContactRoute: ContactRoute,
   EducationRoute: EducationRoute,
   FeaturedRoute: FeaturedRoute,
+  InternshipRoute: InternshipRoute,
   ProjectsRoute: ProjectsRoute,
   SkillsRoute: SkillsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}

@@ -4,10 +4,10 @@ import avatar from "@/assets/avatar.png";
 
 const tabs = [
   { to: "/", label: "Overview", index: 0, exact: true },
-  { to: "/featured", label: "Featured", index: 1 },
-  { to: "/projects", label: "Projects", index: 2 },
-  { to: "/skills", label: "Skills", index: 3 },
-  { to: "/education", label: "Education", index: 4 },
+  { to: "/education", label: "Education", index: 1 },
+  { to: "/internship", label: "Internships", index: 2 },
+  { to: "/projects", label: "Projects", index: 3 },
+  { to: "/skills", label: "Skills", index: 4 },
   { to: "/achievements", label: "Achievements", index: 5 },
   { to: "/contact", label: "Contact", index: 6 },
 ] as const;
@@ -105,7 +105,6 @@ export function ProfileLayout({ children }: { children: React.ReactNode }) {
 
         <footer className="mt-20 pt-6 border-t border-border text-[10px] font-mono uppercase tracking-widest text-muted-foreground flex justify-between">
           <span>© 2026 Kanishkhaa M S</span>
-          <span>Built with ✦ Lovable</span>
         </footer>
       </div>
     </div>
