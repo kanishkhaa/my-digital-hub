@@ -2,5 +2,11 @@
   "buildCommand": "bun run build",
   "installCommand": "bun install",
   "framework": "vite",
-  "outputDirectory": "dist"
+  "outputDirectory": "dist/client",
+  "rewrites": [
+    {
+      "source": "/:path*",
+      "destination": "/api/[[...route]]"
+    }
+  ]
 }
