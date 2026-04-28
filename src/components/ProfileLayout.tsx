@@ -71,7 +71,7 @@ export function ProfileLayout({ children }: { children: React.ReactNode }) {
                 rel="noreferrer"
                 className="flex items-center gap-2 text-xs text-accent hover:underline"
               >
-                <LinkIcon className="size-3.5" /> kanishkhaa-portfolio.vercel.app
+                <LinkIcon className="size-3.5" /> kanishkhaa.vercel.app
               </a>
               <a
                 href="mailto:kanishkhaams@gmail.com"
