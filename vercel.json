@@ -1,17 +1,14 @@
 {
-  "buildCommand": "bun run build",
-  "installCommand": "bun install",
-  "framework": "vite",
-  "outputDirectory": "dist",
-  "cleanUrls": true,
-  "rewrites": [
+  "builds": [
     {
-      "source": "/api/(.*)",
-      "destination": "/api/$1"
-    },
+      "src": "dist/server/server.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
     {
-      "source": "/(.*)",
-      "destination": "/"
+      "src": "/(.*)",
+      "dest": "dist/server/server.js"
     }
   ]
 }
