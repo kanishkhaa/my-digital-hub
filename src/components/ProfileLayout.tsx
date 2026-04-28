@@ -66,7 +66,7 @@ export function ProfileLayout({ children }: { children: React.ReactNode }) {
                 <MapPin className="size-3.5" /> Coimbatore, India
               </div>
               <a
-                href="https://kanishkhaa-portfolio.vercel.app/"
+                href="https://kanishkhaa.vercel.app/"
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center gap-2 text-xs text-accent hover:underline"
